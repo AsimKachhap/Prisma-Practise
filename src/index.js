@@ -3,8 +3,14 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
 
+const connectDb = require("./db/index");
+
 dotenv.config();
 const app = express();
+
+connectDb();
+
+app.use(morgan("dev"));
 
 const PORT = process.env.PORT || 8080;
 
